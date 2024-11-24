@@ -1,0 +1,14 @@
+import numpy
+from pomrgranate import *
+guest=DiscreteDistribution({'A':1./3,'b':1./3,'c':1./3})
+prize=DiscreteDistribution({'A':1./3,'b':1./3,'c':1./3})
+monty=ConditionalProbabilityTable([].[guest,prize])
+s1=state(guest,name="guest")
+s2=
+s3=
+model=BayesianNetwork("Monty Hall Problem")
+model.add_states(s1,s2,s3)
+model.sdd_edge(s1,s3)
+model.add_edge(s2,s3)
+model.bake()
+print(model.probability([])
