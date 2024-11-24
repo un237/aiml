@@ -1,0 +1,38 @@
+def bfs(graph, start):
+    visited = set()
+    queue = [start]
+    visited.add(start)
+
+    while queue:
+        node = queue.pop(0)  # Dequeue the first element
+        print(node, end=" ")  # Process the node
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+
+def dfs_recursive(graph, node, visited=None):
+    if visited is None:
+        visited = set()
+    
+    if node not in visited:
+        print(node, end=" ")  # Process the node
+        visited.add(node)
+        for neighbor in graph[node]:
+            dfs_recursive(graph, neighbor, visited)
+
+# Example graph as an adjacency list
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F'],
+    'D': [],
+    'E': [],
+    'F': []
+}
+
+print("BFS Traversal:")
+bfs(graph, 'A')
+
+print("\nDFS Recursive Traversal:")
+dfs_recursive(graph, 'A')
